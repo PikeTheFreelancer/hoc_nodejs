@@ -27,8 +27,8 @@ conn.connect(function (err){
         throw err.stack;
     }
     else
-console.log("connect success");
- })
+    console.log("connect success");
+})
 
 // conn.query(sql, function(err) {
 //     if(err)
