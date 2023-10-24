@@ -1,25 +1,31 @@
-doctype html
-html(lang='en')
+.posts
   head
-    title Template Pug
     style.
       table, th, td {
-        border: 1px solid black;
+      border: 1px solid black;
+      border-collapse: collapse;
+      margin: 10px 30px;
       }
-  body
-    include input.pug
-    .posts
-      table
-        thead
-          tr
-            th Id
-            th Title
-        tbody
-          - if (posts && posts.length > 0)
-            each post in posts
-              tr
-                td= post.id
-                td= post.title
-          - else
-            tr
-              td(colspan='2') No posts available
+      th, td {
+        padding: 5px;
+        text-align: left;
+      }
+  form(action="/search", method="GET")
+    input(name="id", type="text", placeholder="id")
+    button Search
+  table
+    thead
+      tr
+        th  Id
+        th  Title
+        th(colspan='3') Action
+    tbody
+    each post in posts
+      tr
+        td=  post.id
+        td=  post.title
+        td
+          a(href=`/edit?id=${post.id}`) Update
+        td
+          a(href=`/delete?id=${post.id}`) Delete
+  a(href='/create') New

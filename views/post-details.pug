@@ -1,0 +1,15 @@
+h1 Details
+
+form(action="/edit", method="post") 
+    each post in posts
+        label(for="id") id:
+        br
+        input(type="text", placeholder="id", name="id" value=`${post.id}` readonly)
+        br
+        label(for="title") title:
+        br
+        input(type="text" value=post.title name="title")
+        br
+        button save
+
+a(href="/") home
